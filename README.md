@@ -3,6 +3,8 @@
 - How to run
 
 ```sh
+# pgsql or mysql
+DB_TYPE=pgsql
 # The host name of postgres (or ip address)
 POSTGRES_SERVER_NAME=postgres_dev_server
 # The user of postgres server

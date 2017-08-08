@@ -13,7 +13,7 @@ then
 	if [ ${DB_INIT}x == "false"x ]; then
 	  SKIP_INITDB='--skip-initdb'
 	fi
-  php eccube_install.php pgsql none ${SKIP_CREATEDB} ${SKIP_INITDB}
+  php eccube_install.php ${DB_TYPE} none ${SKIP_CREATEDB} ${SKIP_INITDB}
   rm $installfile
 fi
 

@@ -10,6 +10,7 @@ ENV DBUSER=cube3_dev_user
 ENV DBPORT=5432
 ENV DBPASS=password
 
+ENV DB_TYPE=pgsql
 ENV DB_CREATE=true
 ENV DB_INIT=true
 

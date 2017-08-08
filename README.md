@@ -44,6 +44,7 @@ docker run -it \
     -e DBNAME=${POSTGRES_DB} \
     -e DBUSER=${POSTGRES_USER} \
     -e DBPASS=${POSTGRES_PASSWORD} \
+    -e DB_TYPE=${DB_TYPE} \
     -p 8080:80 \
      ebusinessdocker/eccube sh
 ```

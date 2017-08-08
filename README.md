@@ -46,5 +46,5 @@ docker run -it \
     -e DBPASS=${POSTGRES_PASSWORD} \
     -e DB_TYPE=${DB_TYPE} \
     -p 8080:80 \
-     ebusinessdocker/eccube sh
+    xinguang/ec-cube-docker sh
 ```

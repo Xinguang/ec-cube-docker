@@ -13,6 +13,11 @@ ENV DBPASS=password
 ENV DB_TYPE=pgsql
 ENV DB_CREATE=true
 ENV DB_INIT=true
+ENV MAIL_HOST=localhost
+ENV MAIL_PORT=25
+ENV MAIL_USER=root
+ENV MAIL_PASS=password
+
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -43,6 +48,7 @@ WORKDIR /ec-cube-3.0.15
 RUN composer install
 
 VOLUME /ec-cube-3.0.15/html/upload
+VOLUME /ec-cube-3.0.15/app/Plugin
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]

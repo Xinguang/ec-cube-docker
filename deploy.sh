@@ -41,7 +41,7 @@ docker run -d \
     -v $(pwd)/ec-cube:/root/plugin \
     -p 81:80 \
     -p 8443:443 \
-    ebusinessdocker/eccube
+    xinguang/ec-cube-docker
 
 sleep 30s
 

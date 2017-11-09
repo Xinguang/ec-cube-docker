@@ -18,5 +18,6 @@ xcuserdata
 CVS
 run.sh
 build.sh
-ec-cube
+ec-cube*
 plugin
+dev

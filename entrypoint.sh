@@ -15,6 +15,8 @@ then
 	fi
   php eccube_install.php ${DB_TYPE} none ${SKIP_CREATEDB} ${SKIP_INITDB}
   rm $installfile
+	chown -R nginx *
 fi
 
-php -S 0.0.0.0:80 -t html
+php-fpm -D && /usr/sbin/nginx -g "daemon off;"
+# ps aux | grep -e nginx -e php-fpm

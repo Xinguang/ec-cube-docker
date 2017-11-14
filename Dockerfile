@@ -25,7 +25,7 @@ RUN cp /etc/localtime /root/old.timezone && \
     chmod +x /entrypoint.sh && \
     yum -y update && \
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7  && \&& \
-    yum install -y php php-pdo php-pdo_pgsql php-dom php-mbstring php-gd php-xml php-fpm && \
+    yum install -y php php-pdo php-pdo_pgsql php-dom php-mbstring php-gd php-xml php-fpm php-soap && \
     yum install -y epel-release && \
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7  && \
     yum install -y php-mcrypt php-apc nginx && \

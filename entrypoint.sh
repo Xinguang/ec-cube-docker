@@ -1,7 +1,19 @@
 #!/bin/bash
 
-installfile="/ec-cube-3.0.15/html/install.php"
+# ec-cube-3.0.15
+if [[ ! -d /ec-cube-3.0.15/src ]]; then
+	curl -Ss -o eccube.tar.gz https://codeload.github.com/EC-CUBE/ec-cube/tar.gz/3.0.15
+	tar -zxvf eccube.tar.gz -C / 
+	rm eccube.tar.gz
+fi
 
+# composer
+if [[ ! -d /ec-cube-3.0.15/vendor ]]; then
+	composer install
+fi
+
+# install
+installfile="/ec-cube-3.0.15/html/install.php"
 if [ -f "$installfile" ]
 then
 	echo "$file found."
@@ -18,5 +30,6 @@ then
 	chown -R nginx *
 fi
 
+# run
 php-fpm -D && /usr/sbin/nginx -g "daemon off;"
 # ps aux | grep -e nginx -e php-fpm

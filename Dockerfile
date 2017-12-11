@@ -23,9 +23,9 @@ RUN cp /etc/localtime /root/old.timezone && \
     ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     cp /root/entrypoint.sh /entrypoint.sh && \
     chmod +x /entrypoint.sh && \
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
     yum -y update && \
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7  && \&& \
-    yum install -y php php-pdo php-pdo_pgsql php-dom php-mbstring php-gd php-xml php-fpm php-soap && \
+    yum install -y php php-pdo php-mysql php-pdo_pgsql php-dom php-mbstring php-gd php-xml php-fpm php-soap && \
     yum install -y epel-release && \
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7  && \
     yum install -y php-mcrypt php-apc nginx && \
@@ -47,10 +47,12 @@ RUN cp /etc/localtime /root/old.timezone && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
     # php eccube_install.php pgsql
+    
+VOLUME /ec-cube-3.0.15
 WORKDIR /ec-cube-3.0.15
 
-VOLUME /ec-cube-3.0.15/html/upload
-VOLUME /ec-cube-3.0.15/app/Plugin
 EXPOSE 80 443
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+# yum install cifs-utils

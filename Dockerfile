@@ -1,6 +1,7 @@
 FROM centos:7
 
-ENV ROOTUSER=postgres \
+ENV ECCUBE_VERSION=3.0.16 \
+    ROOTUSER=postgres \
     ROOTPASS=password \
     DBSERVER=postgres \
     DBNAME=cube3_dev \
@@ -36,10 +37,11 @@ RUN cp /etc/localtime /root/old.timezone && \
     cp -f /root/php.ini /etc/php.ini && \
     mv /root/certificates /certificates && \
     rm -rf /root/* && \
-    curl -Ss -o eccube.tar.gz https://codeload.github.com/EC-CUBE/ec-cube/tar.gz/3.0.15 && \
+    curl -Ss -o eccube.tar.gz https://codeload.github.com/EC-CUBE/ec-cube/tar.gz/$ECCUBE_VERSION && \
     tar -zxvf eccube.tar.gz -C / && \
     rm eccube.tar.gz && \
-    cd /ec-cube-3.0.15 && \
+    mv /ec-cube-$ECCUBE_VERSION /ec-cube && \
+    cd /ec-cube && \
     curl -Ss -o composer-setup.php https://getcomposer.org/installer && \
     php composer-setup.php && \
     mv composer.phar /usr/bin/composer && \
@@ -48,8 +50,8 @@ RUN cp /etc/localtime /root/old.timezone && \
     ln -sf /dev/stderr /var/log/nginx/error.log
     # php eccube_install.php pgsql
     
-VOLUME /ec-cube-3.0.15
-WORKDIR /ec-cube-3.0.15
+VOLUME /ec-cube
+WORKDIR /ec-cube
 
 EXPOSE 80 443
 

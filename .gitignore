@@ -21,3 +21,5 @@ build.sh
 ec-cube*
 plugin
 dev
+source
+aws
